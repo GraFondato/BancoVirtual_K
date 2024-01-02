@@ -1,0 +1,15 @@
+.head{
+    width: 100%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.logo{
+    height: 200px;
+    margin: auto;
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
