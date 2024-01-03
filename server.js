@@ -25,7 +25,22 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 // app.use(cors());
 
 // router sistem
-const mainRutas = require('./src/routes/main');
+const mainRutas = require('./src/routes/main')
+// const productosRutas = require('./routes/productos');
+// const detalleRutas = require('./routes/detalle');
+const userRutas = require('./src/routes/user');
+// const cartRutas = require('./routes/cart');
+// const apiProductRoutes = require('./routes/api/productRouter');
+// const apiUserRoutes = require('./routes/api/userRouter');
+
+
+app.use('/', mainRutas);
+// app.use('/productos', productosRutas);
+// app.use('/detalleProd', detalleRutas);
+app.use('/register', userRutas);
+// app.use('/api/products', apiProductRoutes);
+// app.use('/api/users', apiUserRoutes);
+// app.use('/productCart', cartRutas);
 
 
 app.set('view engine', 'ejs');
@@ -35,7 +50,6 @@ app.set('views', './views');
 //     res.status(404).render('../src/views/not-found')
 // })
 
-app.use('/', mainRutas);
 
 // levantar el servidor
 let port = process.env.PORT || 3001
