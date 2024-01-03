@@ -12,44 +12,22 @@
             <section id="login">
                 <h2>Iniciar Sesión</h2>
                 <div>
-                    <form id="Iniciar" action="/user/login" method="POST">
-                        <input type="email" id="email" name="email" class="inicio iniput" placeholder="Email"
-                            value="<%= (locals.old && old.email) ? old.email : '' %>">
-                        <li style="display: none;" id="error1" class="errores"></li>
-                        <% if(locals.errors && errors.email){ %>
-                            <div class="text-error">
-                                <%= errors.email.msg %>
-                            </div>
-                            <% } %>
-                                <div class="contenedor-password">
-                                    <input type="password" id="password" name="password" class="inicio iniput"
-                                        placeholder="Contraseña"
-                                        value="<%= (locals.old && old.password) ? old.password : '' %>">
-                                    <button type="button" class="boton-passsword" id="boton-passsword">
-                                        <i class="fas fa-eye ojoPasswordBoton" id="ocultar-password"></i>
-                                        <i class="fas fa-eye-slash ojoPasswordBoton" id="mostrar-password"></i>
-                                    </button>
-                                    <% if(locals.errors && errors.password){ %>
-                                        <div class="text-error">
-                                            <%= errors.password.msg %>
-                                        </div>
-                                        <% } %>
-                                </div>
-                                <li style="display: none;" id="error2" class="errores"></li>
-                                <p class="inicio">
-                                    <input type="checkbox" id="sesion-iniciada" name="sesion" class="iniput">
-                                    <label for="sesion-iniciada">Mantener sesión iniciada</label>
-                                    <% if(locals.errors && errors.sesion){ %>
-                                        <div class="text-error">
-                                            <%= errors.sesion.msg %>
-                                        </div>
-                                        <% } %>
-                                </p>
-                                <button type="submit" class="inicio" id="boton1">Iniciar Sesión</button>
-
-                                <p class="inicio">
-                                    <a href="register">No tenes cuenta todavía, registrate acá</a>
-                                </p>
+                    <form id="loginStart" action="/user/login" method="POST">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
         </main>

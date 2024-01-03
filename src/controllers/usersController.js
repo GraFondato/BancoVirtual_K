@@ -1,6 +1,8 @@
 const path = require("path");
 
+const profileRoute = path.resolve(__dirname, "../views/users/profile"); 
 const rutaRegistro = path.resolve(__dirname, "../views/users/register");
+let rutaproducto = true;
 
 const controller = {
     register: (req, res) => {
