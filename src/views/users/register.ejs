@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <%- include('../head') %>
+    <%- include('../partials/head') %>
         <link rel="stylesheet" href="/css/register.css">
 </head>
 
 <body>
-    <%- include('../header') %>
+    <%- include('../partials/header') %>
         <main>
             <form class="formRegister" enctype="multipart/form-data">
                 <fieldset>
@@ -54,8 +54,11 @@
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </fieldset>
             </form>
+            <div class="imageRegister">
+                <img src="/img/istockphoto-1281297414-612x612.jpg">
+            </div>
         </main>
-        <%- include('../footer') %>
+        <%- include('../partials/footer') %>
 </body>
 
 </html>
