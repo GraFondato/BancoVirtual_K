@@ -1,5 +1,9 @@
-const path = require("path");
+let path = require("path");
+const { validationResult } = require('express-validator');
+const bcryptjs = require('bcryptjs');
+const session = require('express-session')
 
+const db = require('../../database/models');
 const profileRoute = path.resolve(__dirname, "../views/users/profile"); 
 const rutaRegistro = path.resolve(__dirname, "../views/users/register");
 let rutaproducto = true;
@@ -38,11 +42,10 @@ const controller = {
                 })
             } else {
                 db.User.create({
-                    nombre: req.body.nombre,
-                    apellido: req.body.apellido,
+                    name: req.body.name,
+                    lastname: req.body.lastname,
                     email: req.body.email,
-                    terminos: req.body.terminos,
-                    foto: '/img/users/' + req.file.filename,
+                    image: '/img/users/' + req.file.filename,
                     password: bcryptjs.hashSync(req.body.password, 10),
                 })
                     .then(() => {
