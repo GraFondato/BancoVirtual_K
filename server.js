@@ -37,7 +37,7 @@ const userRutas = require('./src/routes/user');
 app.use('/', mainRutas);
 // app.use('/productos', productosRutas);
 // app.use('/detalleProd', detalleRutas);
-app.use('/register', userRutas);
+app.use('/users', userRutas);
 // app.use('/api/products', apiProductRoutes);
 // app.use('/api/users', apiUserRoutes);
 // app.use('/productCart', cartRutas);

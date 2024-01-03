@@ -1,0 +1,18 @@
+@import url(centralize.css);
+@import url(header.css);
+@import url(footer.css);
+
+*{
+    margin: 0; 
+    padding: 0;
+}
+
+body{
+    background: linear-gradient(rgb(141, 141, 163), rgb(42, 47, 82));
+}
+
+.formRegister{
+    width: 50%;
+    display: flex;
+    justify-content: center; 
+}

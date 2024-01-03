@@ -2,44 +2,60 @@
 <html>
 
 <head>
-    <%- include('../partials/head') %>
+    <%- include('../head') %>
         <link rel="stylesheet" href="/css/register.css">
 </head>
 
 <body>
-    <%- include('../partials/header') %>
+    <%- include('../header') %>
         <main>
-            <form>
-                <fieldset disabled>
-                    <legend>Disabled fieldset example</legend>
+            <form class="formRegister" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Formulario de Registro</legend>
                     <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Nombre</label>
-                        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Ingrese su nombre">
                     </div>
                     <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Apellido</label>
-                        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" id="apellido" class="form-control" placeholder="Ingrese su apellido">
                     </div>
                     <div class="mb-3">
-                        <label for="disabledSelect" class="form-label">tipo de identificación</label>
-                        <select id="disabledSelect" class="form-select">
-                            <option>Disabled select</option>
+                        <label for="tipoIdentificacion" class="form-label">Tipo de Identificación</label>
+                        <select id="tipoIdentificacion" class="form-select">
+                            <option>Seleccione...</option>
                             <option>Documento Nacional de Identidad</option>
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="numero" class="form-label">N° de Identificacion</label>
+                        <input type="text" id="numero" class="form-control" placeholder="Ingrese numero">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Imagen de Perfil</label>
+                        <input type="file" id="image" class="form-control" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" id="email" class="form-control" placeholder="Ingrese su correo electrónico">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña">
+                    </div>
+                    <div class="mb-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-                            <label class="form-check-label" for="disabledFieldsetCheck">
-                                Can't check this
+                            <input class="form-check-input" type="checkbox" id="aceptoTerminos">
+                            <label class="form-check-label" for="aceptoTerminos">
+                                Acepto los términos y condiciones
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
                 </fieldset>
             </form>
         </main>
-        <%- include('../partials/footer') %>
+        <%- include('../footer') %>
 </body>
 
 </html>

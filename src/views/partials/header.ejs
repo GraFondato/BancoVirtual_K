@@ -13,29 +13,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<% if(locals.rutaproducto){ %>
-                        register
-                        <% }else if(locals.rutaDetalle){ %>
-                            ../user/register
-                            <% } else if(locals.rutaEdit){ %>
-                            ../../user/register
-                            <% }else{ %>
-                            user/register
-                            <% } %>"">Hacete Cliente</a>
+                        <a class="nav-link active" aria-current="page" href="/users/register">Hacete
+                            Cliente</a>
                     </li>
                     <li class=" nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Productos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Cuentas</a></li>
-                                <li><a class="dropdown-item" href="#">Solicitar Tarjeta de Credito</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Atención al Cliente</a></li>
-                            </ul>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Cuentas</a></li>
+                            <li><a class="dropdown-item" href="#">Solicitar Tarjeta de Credito</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Atención al Cliente</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">

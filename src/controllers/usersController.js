@@ -1,6 +1,6 @@
 const path = require("path");
 
-const rutaRegistro = path.resolve(__dirname, "../views/users/register");
+const rutaRegistro = path.resolve(__dirname, "../views/partials/users/register");
 
 const controller = {
     register: (req, res) => {
