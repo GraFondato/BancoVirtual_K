@@ -22,8 +22,28 @@ main{
 
 .imageRegister{
     width: 50%;
+    margin: auto;
 }
 
 .imageRegister img{
     width: 100%;
+}
+
+.btn-primary{
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 430px){
+    main{
+        flex-direction: column;
+    }
+
+    .formRegister{
+        width: 100%;
+    }
+    .imageRegister{
+        width: 100%;
+    }
 }

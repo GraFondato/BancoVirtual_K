@@ -5,6 +5,7 @@
 }
 
 .logo{
+    width: auto;
     height: 200px;
     margin: auto;
     padding: auto;
@@ -13,3 +14,8 @@
     align-content: center;
 }
 
+@media (max-width: 430px){
+    .logo{
+        width: 100%;
+    }
+}
