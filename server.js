@@ -13,12 +13,12 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(express.json());
-// app.use(session({
-//     secret: "It's a secret",
-//     resave: false,
-//     saveUninitialized: false,
-// })) ;
-// app.use(methodOverride('_method'))
+app.use(session({
+    secret: "It's a secret",
+    resave: false,
+    saveUninitialized: false,
+})) ;
+app.use(methodOverride('_method'))
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -44,6 +44,13 @@ app.use('/users', userRutas);
 // app.use('/api/users', apiUserRoutes);
 // app.use('/productCart', cartRutas);
 
+// Servir archivos estáticos desde la carpeta "frontend/build"
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+// Manejar la ruta principal para servir la aplicación React
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+});
 
 app.set('view engine', 'ejs');
 app.set('views', './views');

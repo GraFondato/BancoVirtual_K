@@ -48,7 +48,12 @@ const controller = {
                 }
             })
             .then(() => {
-                return res.redirect("/");
+                // Iniciar sesión después de registrar al usuario
+                req.session.userLogged = usuarioRegistrado;
+                if (req.body.sesion) {
+                    res.cookie('userEmail', req.body.email, { maxAge: ((1000 * 60) * 60) * 24 });
+                }
+                return res.redirect("/users/profile");
             })
             .catch((err) => {
                 console.log(err);
@@ -74,44 +79,42 @@ const controller = {
             })
         };
 
-        let userToLogin
+        let userToLogin 
         let passwordOk
-        db.User.findOne({ where: { email: req.body.email } })
-            .then((resultados) => {
+        db.User.findOne({ where: { email: req.body.email}})
+            .then((resultados)=>{
                 userToLogin = resultados
                 if (userToLogin) {
                     passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password);
                     return passwordOk
                 } else {
-                    return res.render(path.resolve(__dirname, "../views/users/login"), {
-                        errors: {
-                            email: { msg: "Error al encontrar el usuario" }
-                        }
-                    });
+                    return res.render(path.resolve(__dirname, "../views/users/login"),{
+                    errors: { 
+                    email: {msg:"Error al encontrar el usuario"}
+                }});
                 }
             })
-            .then((passwordOk) => {
-                if (passwordOk) {
-                    req.session.userLogged = userToLogin;
+            .then((passwordOk)=>{
+                if(passwordOk) {
+                    req.session.userLogged = userToLogin; 
                     if (req.body.sesion) {
-                        res.cookie('userEmail', req.body.email, { maxAge: ((1000 * 60) * 60) * 24 })
+                        res.cookie('userEmail', req.body.email, { maxAge: ((1000 * 60) * 60) * 24})
                     }
-                    return res.redirect("/user/profile");
+                    return res.redirect("/users/profile");
                 } else {
-                    return res.render(path.resolve(__dirname, "../views/users/login"), {
-                        errors: {
-                            email: { msg: "Las credenciales son invalidas" }
-                        }
-                    });
+                    return res.render(path.resolve(__dirname, "../views/users/login"),{
+                    errors: {
+                        email: {msg: "Las credenciales son invalidas"}
+                    }
+                });
                 }
             })
-            .catch((err) => {
+            .catch((err)=>{
                 console.log(err)
             })
 
         
-    },
-
+        },
     profile: (req, res) => {
         let logged = true;
         
