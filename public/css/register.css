@@ -10,8 +10,20 @@ body{
     background: linear-gradient(rgb(141, 141, 163), rgb(42, 47, 82));
 }
 
+main{
+    display: flex;
+}
+
 .formRegister{
     width: 50%;
     display: flex;
     justify-content: center; 
+}
+
+.imageRegister{
+    width: 50%;
+}
+
+.imageRegister img{
+    width: 100%;
 }

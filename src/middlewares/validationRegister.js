@@ -1,5 +1,4 @@
 const express = require('express');
-const multer = require('multer');
 const path = require('path');
 const { body } = require('express-validator');
 const db = require('../../database/models')
@@ -7,21 +6,6 @@ const db = require('../../database/models')
 const validations = [
     body('name').notEmpty().withMessage('El nombre debe tener al menos 2 caracteres'),
     body('lastname').notEmpty().withMessage('El apellido debe tener al menos 2 caracteres'),
-    body('identification').notEmpty().withMessage('seleccione tipo de identificación'),
-    body('image').custom(((value, { req })=>{
-        let file = req.file;
-        let acceptedExtension = ['.jpg', '.png', '.gif', '.jpeg']
-
-        if(!file){
-            throw new Error('Tienes que subir una imagen');
-        }else{
-            let fileExtension = path.extname(file.originalname);
-            if(!acceptedExtension.includes(fileExtension)){
-                throw new Error(`Las extensiones de archivo permitidas son ${acceptedExtension.join(', ')}`);
-            }
-        }
-        return true;
-        })),
     body('email')
         .notEmpty().withMessage('Tienes que escribir un email').bail()
         .isEmail().withMessage('Debes ingresar un formato válido')

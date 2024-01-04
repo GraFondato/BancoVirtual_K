@@ -5,25 +5,14 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10),
             primaryKey: true,
             allowNull: false,
-            autoIncrement: true
+            autoIncrement: true,
+            field: 'id_users'
         },
         name: {
             type: dataTypes.STRING(45),
             allowNull: false,
         },
         lastname: {
-            type: dataTypes.STRING(45),
-            allowNull: false,
-        },
-        identification: {
-            type: dataTypes.STRING(45),
-            allowNull: false,
-        },
-        number: {
-            type: dataTypes.STRING(45),
-            allowNull: false,
-        },
-        image: {
             type: dataTypes.STRING(45),
             allowNull: false,
         },

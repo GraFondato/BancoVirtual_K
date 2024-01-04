@@ -14,49 +14,50 @@ const controller = {
     },
 
     processRegister: (req, res) => {
-        const resultValidation = validationResult(req);
-        
-        if (resultValidation.errors.length > 0) {
-            res.render(rutaRegistro, {
-                errors: resultValidation.mapped(),
-                oldData: req.body,
-                rutaproducto
+    const resultValidation = validationResult(req);
+
+    if (resultValidation.errors.length > 0) {
+        res.render(rutaRegistro, {
+            errors: resultValidation.mapped(),
+            oldData: req.body,
+            rutaproducto
+        });
+    } else {
+        let usuarioRegistrado;
+
+        db.User.findOne({ where: { email: req.body.email } })
+            .then((resultados) => {
+                usuarioRegistrado = resultados;
+
+                if (usuarioRegistrado) {
+                    res.render(rutaRegistro, {
+                        errors: {
+                            email: {
+                                msg: "Este email ya está registrado"
+                            }
+                        },
+                        oldData: req.body
+                    });
+                } else {
+                    return db.User.create({
+                        name: req.body.name,
+                        lastname: req.body.lastname,
+                        email: req.body.email,
+                        password: bcryptjs.hashSync(req.body.password, 10),
+                    });
+                }
             })
-        } else {
-            let usuarioRegistrado
-            db.User.findOne({ where: { email: req.body.email } })
-                .then((resultados) => {
-                    usuarioRegistrado = resultados
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-            if (usuarioRegistrado) {
-                return res.render(rutaRegistro, {
-                    errors: {
-                        email: {
-                            msg: "este email ya esta registrado"
-                        }
-                    },
-                    oldData: req.body
-                })
-            } else {
-                db.User.create({
-                    name: req.body.name,
-                    lastname: req.body.lastname,
-                    email: req.body.email,
-                    image: '/img/users/' + req.file.filename,
-                    password: bcryptjs.hashSync(req.body.password, 10),
-                })
-                    .then(() => {
-                        return res.redirect("/");
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                    })
-            }
+            .then(() => {
+                return res.redirect("/");
+            })
+            .catch((err) => {
+                console.log(err);
+                return res.status(500).send("Error en el registro del usuario.");
+            });
+        console.log("Datos del formulario:", req.body.email);
         }
-    },
+        
+},
     login: (req, res) => {
         let ruta = path.resolve(__dirname, "../views/users/login");
         res.render(ruta, { rutaproducto });

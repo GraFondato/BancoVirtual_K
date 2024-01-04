@@ -9,39 +9,27 @@
 <body>
     <%- include('../partials/header') %>
         <main>
-            <form action="/users/register" method="POST" enctype="multipart/form-data" class="formRegister">
+            <form action="/users/register" method="POST" class="formRegister">
                 <fieldset>
                     <legend>Formulario de Registro</legend>
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
-                        <input type="text" id="name" class="form-control" placeholder="Ingrese su nombre">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Ingrese su nombre">
                     </div>
                     <div class="mb-3">
                         <label for="lastname" class="form-label">Apellido</label>
-                        <input type="text" id="lastname" class="form-control" placeholder="Ingrese su apellido">
-                    </div>
-                    <div class="mb-3">
-                        <label for="identification" class="form-label">Tipo de Identificación</label>
-                        <select id="identification" class="form-select">
-                            <option>Seleccione...</option>
-                            <option>Documento Nacional de Identidad</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="number" class="form-label">N° de Identificacion</label>
-                        <input type="text" id="number" class="form-control" placeholder="Ingrese numero">
-                    </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Imagen de Perfil</label>
-                        <input type="file" id="image" class="form-control" accept="image/*">
+                        <input type="text" id="lastname" name="lastname" class="form-control"
+                            placeholder="Ingrese su apellido">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" id="email" class="form-control" placeholder="Ingrese su correo electrónico">
+                        <input type="email" id="email" name="email" class="form-control"
+                            placeholder="Ingrese su correo electrónico">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña">
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Ingrese su contraseña">
                     </div>
                     <div class="mb-3">
                         <div class="form-check">
@@ -68,16 +56,11 @@
                                                     <%= errors.email.msg %>
                                                 </p>
                                                 <% } %>
-                                                    <% if(errors.image){ %>
+                                                    <% if(errors.password){ %>
                                                         <p>
-                                                            <%= errors.image.msg %>
+                                                            <%= errors.password.msg %>
                                                         </p>
                                                         <% } %>
-                                                            <% if(errors.password){ %>
-                                                                <p>
-                                                                    <%= errors.password.msg %>
-                                                                </p>
-                                                                <% } %>
                         </div>
                         <% } %>
                             <button type="submit" class="btn btn-primary">Enviar</button>
