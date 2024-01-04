@@ -37,12 +37,9 @@ const apiUserRoutes = require('./src/routes/api/userRouter');
 
 
 app.use('/', mainRutas);
-// app.use('/productos', productosRutas);
-// app.use('/detalleProd', detalleRutas);
+
 app.use('/users', userRutas);
-// app.use('/api/products', apiProductRoutes);
-// app.use('/api/users', apiUserRoutes);
-// app.use('/productCart', cartRutas);
+
 
 // Servir archivos estáticos desde la carpeta "frontend/build"
 app.use(express.static(path.join(__dirname, 'frontend/build')));

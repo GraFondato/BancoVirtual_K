@@ -4,6 +4,7 @@ const bcryptjs = require('bcryptjs');
 const session = require('express-session')
 
 const db = require('../../database/models');
+const { log } = require("console");
 const profileRoute = path.resolve(__dirname, "../views/users/profile"); 
 const rutaRegistro = path.resolve(__dirname, "../views/users/register");
 let rutaproducto = true;
@@ -70,7 +71,6 @@ const controller = {
     
     loginProcess: (req, res) => {
         const resultValidation = validationResult(req);
-        
         if (resultValidation.errors.length > 0) {
             return res.render(path.resolve(__dirname, "../views/users/login"), {
                 errors: resultValidation.mapped(),
@@ -81,8 +81,9 @@ const controller = {
 
         let userToLogin 
         let passwordOk
-        db.User.findOne({ where: { email: req.body.email}})
-            .then((resultados)=>{
+        db.User.findOne({ where: { email: req.body.email } })
+            .then((resultados) => {
+                console.log(resultados)
                 userToLogin = resultados
                 if (userToLogin) {
                     passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password);
@@ -94,8 +95,9 @@ const controller = {
                 }});
                 }
             })
-            .then((passwordOk)=>{
-                if(passwordOk) {
+            .then((passwordOk) => {
+                if (passwordOk) {
+                    console.log("Contraseña correcta:", passwordOk);
                     req.session.userLogged = userToLogin; 
                     if (req.body.sesion) {
                         res.cookie('userEmail', req.body.email, { maxAge: ((1000 * 60) * 60) * 24})

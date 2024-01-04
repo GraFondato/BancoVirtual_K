@@ -28,9 +28,43 @@ main{
     display: inline-block;
 }
 
+.buttonPassword{
+    display: flex;
+    border-radius: 0px 15px 15px 0;
+}
+
 .form-check{
     display: flex;
     justify-content: center;
+}
+
+#password{
+    border-radius: 4px 0 0 4px ;
+}
+
+#password, .boton-passsword{
+    margin: 0px;
+    
+}
+
+.boton-passsword{
+    width: 15%;
+    border-radius: 0 4px 4px 0;
+    height: auto;
+    background: rgb(232, 240, 254);
+
+}
+
+.ojoPasswordBoton{
+    font-size: 1rem;
+    padding: 0px;
+    justify-content: center;
+    color: black;
+}
+
+/* CLASE OJO VER */
+#mostrar-password{
+    display: none;
 }
 
 @media (max-width: 430px){
